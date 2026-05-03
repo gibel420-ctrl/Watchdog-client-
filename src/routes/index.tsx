@@ -3,15 +3,29 @@ import { useMutation } from "convex/react";
 import { api } from "../../convex/_generated/api";
 import { useState } from "react";
 import type { FormEvent } from "react";
-import { 
-  ShieldCheck, 
-  MapPin, 
-  Phone, 
-  Lock,
-  Radio,
-  Car,
-  CheckCircle2
-} from "lucide-react";
+
+// Inline icons to avoid lucide-react dependency issues in this environment
+const ShieldIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+);
+const MapPinIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+);
+const PhoneIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+);
+const RadioIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4.9 19.1C1 15.2 1 8.8 4.9 4.9"/><path d="M7.8 16.2c-2.3-2.3-2.3-6.1 0-8.5"/><circle cx="12" cy="12" r="2"/><path d="M16.2 7.8c2.3 2.3 2.3 6.1 0 8.5"/><path d="M19.1 4.9C23 8.8 23 15.2 19.1 19.1"/></svg>
+);
+const CarIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg>
+);
+const LockIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+);
+const CheckIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+);
 
 export const Route = createFileRoute("/")({
   component: HomePage,
@@ -48,7 +62,7 @@ function HomePage() {
       <nav className="sticky top-0 z-50 border-b border-brand-black/10 bg-brand-cream/80 backdrop-blur-md">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
           <div className="flex items-center gap-2">
-            <ShieldCheck className="h-8 w-8 text-brand-red" />
+            <span className="text-brand-red"><ShieldIcon /></span>
             <span className="text-xl font-bold tracking-tight uppercase">
               Watchdog Security
             </span>
@@ -85,7 +99,7 @@ function HomePage() {
           </div>
         </div>
 
-        {/* Decorative elements (No stock media) */}
+        {/* Decorative elements */}
         <div className="absolute -top-24 -left-24 h-64 w-64 rounded-full border-[40px] border-brand-orange/5" />
         <div className="absolute -bottom-24 -right-24 h-96 w-96 rounded-full border-[60px] border-brand-red/5" />
       </section>
@@ -114,7 +128,7 @@ function HomePage() {
               </div>
               <div className="col-span-2 rounded-[15px] bg-brand-cream/5 p-8 border border-brand-cream/10">
                 <div className="flex items-center gap-4">
-                  <MapPin className="h-8 w-8 text-brand-orange" />
+                  <span className="text-brand-orange"><MapPinIcon /></span>
                   <div>
                     <p className="text-lg font-bold">Southern Tablelands</p>
                     <p className="text-sm text-brand-cream/60">Goulburn, Marulan, Crookwell, Tarago</p>
@@ -138,17 +152,17 @@ function HomePage() {
             {[
               {
                 title: "Monitoring",
-                icon: Radio,
+                icon: RadioIcon,
                 desc: "State-of-the-art surveillance and rapid response systems monitored around the clock."
               },
               {
                 title: "Patrols",
-                icon: Car,
+                icon: CarIcon,
                 desc: "Visible, local patrol units providing a constant presence and deterrent in your neighborhood."
               },
               {
                 title: "Alarms",
-                icon: Lock,
+                icon: LockIcon,
                 desc: "Custom alarm installations designed specifically for the unique needs of local homes and businesses."
               }
             ].map((service, i) => (
@@ -156,7 +170,7 @@ function HomePage() {
                 key={i} 
                 className="group rounded-[15px] border-2 border-brand-black/5 bg-brand-cream p-10 hover:border-brand-orange transition-all hover:shadow-2xl hover:shadow-brand-orange/5"
               >
-                <service.icon className="mb-6 h-12 w-12 text-brand-orange group-hover:scale-110 transition-transform" />
+                <span className="mb-6 block text-brand-orange group-hover:scale-110 transition-transform"><service.icon /></span>
                 <h3 className="mb-4 text-2xl font-bold uppercase">{service.title}</h3>
                 <p className="text-brand-black/60 leading-relaxed font-medium">
                   {service.desc}
@@ -193,7 +207,7 @@ function HomePage() {
                 <div className="space-y-6">
                   <div className="flex items-center gap-4 group">
                     <div className="rounded-full bg-brand-red p-4 group-hover:scale-110 transition-transform">
-                      <Phone className="h-6 w-6 text-brand-cream" />
+                      <span className="text-brand-cream"><PhoneIcon /></span>
                     </div>
                     <div>
                       <p className="text-sm font-bold uppercase tracking-widest text-brand-cream/40">Call Us</p>
@@ -202,7 +216,7 @@ function HomePage() {
                   </div>
                   <div className="flex items-center gap-4 group">
                     <div className="rounded-full bg-brand-orange p-4 group-hover:scale-110 transition-transform">
-                      <MapPin className="h-6 w-6 text-brand-cream" />
+                      <span className="text-brand-cream"><MapPinIcon /></span>
                     </div>
                     <div>
                       <p className="text-sm font-bold uppercase tracking-widest text-brand-cream/40">Visit Us</p>
@@ -214,7 +228,7 @@ function HomePage() {
               <div className="rounded-[15px] bg-brand-cream p-8 text-brand-black">
                 {isSubmitted ? (
                   <div className="flex h-full min-h-[300px] flex-col items-center justify-center text-center">
-                    <CheckCircle2 className="mb-4 h-16 w-16 text-brand-orange" />
+                    <span className="mb-4 text-brand-orange"><CheckIcon /></span>
                     <h3 className="mb-2 text-2xl font-bold uppercase">Request Received</h3>
                     <p className="text-brand-black/60">
                       Thank you for trusting Watchdog Security. <br />
@@ -261,7 +275,7 @@ function HomePage() {
       <footer className="border-t border-brand-black/5 py-12 px-6">
         <div className="mx-auto max-w-7xl flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="flex items-center gap-2">
-            <ShieldCheck className="h-6 w-6 text-brand-red" />
+            <span className="text-brand-red"><ShieldIcon /></span>
             <span className="font-bold tracking-tight uppercase">Watchdog Security</span>
           </div>
           <p className="text-sm text-brand-black/40 font-medium">

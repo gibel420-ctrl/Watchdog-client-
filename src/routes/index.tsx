@@ -61,12 +61,7 @@ function HomePage() {
       {/* Navigation */}
       <nav className="sticky top-0 z-50 border-b border-brand-black/10 bg-brand-cream/80 backdrop-blur-md">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-          <div className="flex items-center gap-3">
-            <img 
-              src="https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=100063597310828" 
-              alt="Watchdog Security Logo" 
-              className="h-12 w-12 rounded-[10px] object-cover shadow-sm border border-brand-black/5"
-            />
+          <div className="flex items-center">
             <span className="text-xl font-bold tracking-tight uppercase">
               Watchdog Security
             </span>
@@ -278,12 +273,7 @@ function HomePage() {
       {/* Footer */}
       <footer className="border-t border-brand-black/5 py-12 px-6">
         <div className="mx-auto max-w-7xl flex flex-col md:flex-row justify-between items-center gap-8">
-          <div className="flex items-center gap-3">
-            <img 
-              src="https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=100063597310828" 
-              alt="Watchdog Security Logo" 
-              className="h-8 w-8 rounded-[5px] object-cover"
-            />
+          <div className="flex items-center">
             <span className="font-bold tracking-tight uppercase">Watchdog Security</span>
           </div>
           <p className="text-sm text-brand-black/40 font-medium">

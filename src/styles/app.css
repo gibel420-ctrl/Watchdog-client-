@@ -1,0 +1,19 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-brand-cream: #F5F5DC;
+  --color-brand-red: #B31818;
+  --color-brand-orange: #F28C28;
+  --color-brand-black: #000000;
+}
+
+@layer base {
+  html,
+  body {
+    @apply text-brand-black bg-brand-cream;
+  }
+
+  .using-mouse * {
+    outline: none !important;
+  }
+}
